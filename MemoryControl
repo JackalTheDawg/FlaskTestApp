@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Enter limit in mb:"
+read limit
+echo "Enter the link (for localhost - localhost:port): "
+read API_link
+
+while :
+do 
+
+	memUsage=$(free -m | awk '/Mem/{print $3}')
+	if (("$memUsage" > $limit)); then
+	  	curl --header "Content-Type: text/html" -X POST -d '{"data":"Memory Usage more than limit"}' @- $API_link
+	fi
+	sleep 1
+done
+exit 0

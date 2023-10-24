@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  flask:
+    build: .
+    container_name: app
+    command: flask --app main run
+    volumes:
+      - .:/usr/src/app
+
+    network_mode: host
+    depends_on:
+      - redis
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - /path/to/local/dаta:/root/redis
+      - /path/to/local/redis.conf:/usr/local/etc/redis/redis.conf
+    container_name: redis
+
+
+

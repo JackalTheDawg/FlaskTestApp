@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="page-container">
+        <div class="post-request">
+            <a href="/add-article"> <button> Добавить статью </button> </a>
+        </div>
+        <br>
+        <div class="get-request">
+            <form method="get">
+                <input placeholder="Название статьи" name="name">
+                <button> Поиск </button>
+            </form>
+        </div>
+        <br>
+        <div>
+            {% for key in keys %}
+               <ul>
+               <li> <a href="/article/{{key}}"> {{key}}<br> </a> </li>
+               </ul>
+            {% endfor %}
+        </div>
+        <div class="data">
+            <a href="/article/{{data}}">{{data}} </a>
+        </div>
+    </div>
+</body>
+</html>
